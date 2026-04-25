@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 콘텐츠 & 자동 가격 책정</title>
+
+<style>
+body {
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    background: #f4f6fb;
+}
+
+.container {
+    max-width: 480px;
+    margin: auto;
+    padding: 20px;
+}
+
+.badge {
+    background: #7c3aed;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    display: inline-block;
+}
+
+h1 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.highlight {
+    color: #6d28d9;
+}
+
+.desc {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.section {
+    background: white;
+    padding: 18px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.feature {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.green { background: #22c55e; }
+.blue { background: #3b82f6; }
+.purple { background: #8b5cf6; }
+.orange { background: #f59e0b; }
+.teal { background: #14b8a6; }
+
+.flow-box {
+    background: #ede9fe;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.arrow {
+    text-align: center;
+    color: #888;
+}
+
+.calc {
+    background: #f1f5f9;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.result {
+    background: #dcfce7;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.time-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.time {
+    width: 48%;
+    background: #f1f5f9;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.time strong {
+    display: block;
+    font-size: 18px;
+}
+
+img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="badge">Step 2</div>
+
+<h1>
+<span class="highlight">AI 콘텐츠 & 자동 가격 책정</span>
+</h1>
+
+<p class="desc">
+AI가 최적 소매가를 계산하고, 상세페이지를 자동 생성합니다.<br>
+상품 등록 시간이 완전히 사라집니다.
+</p>
+
+<!-- 이미지 -->
+<img src="step2-ai.png" alt="AI 자동화 이미지">
+
+<!-- 자동화 흐름 -->
+<div class="section">
+<h3>⚙️ 자동화 흐름</h3>
+
+<div class="flow-box">상품 수집</div>
+<div class="arrow">↓</div>
+<div class="flow-box">AI 가격 계산</div>
+<div class="arrow">↓</div>
+<div class="flow-box">상세페이지 생성</div>
+<div class="arrow">↓</div>
+<div class="flow-box">이미지 최적화</div>
+<div class="arrow">↓</div>
+<div class="flow-box">판매 준비 완료</div>
+
+</div>
+
+<!-- 기능 -->
+<div class="section">
+<h3>📌 핵심 기능</h3>
+
+<div class="feature">
+<div class="icon green">1</div>
+<div>자동 마진 계산 (예: 20%)</div>
+</div>
+
+<div class="feature">
+<div class="icon blue">2</div>
+<div>위탁 판매 모드 지원</div>
+</div>
+
+<div class="feature">
+<div class="icon purple">3</div>
+<div>AI 상세페이지 자동 생성</div>
+</div>
+
+<div class="feature">
+<div class="icon orange">4</div>
+<div>이미지 자동 보정</div>
+</div>
+
+<div class="feature">
+<div class="icon teal">5</div>
+<div>배송비 자동 반영</div>
+</div>
+
+</div>
+
+<!-- 계산 도표 -->
+<div class="section">
+<h3>💰 가격 계산 예시</h3>
+
+<div class="calc">
+12,000원 × (1 + 20%)<br>
+= <strong>14,400원</strong>
+</div>
+
+<div class="calc">
+배송비 +2,500원<br>
+= <strong>16,900원</strong>
+</div>
+
+<div class="result">
+최종 판매가 자동 완성
+</div>
+
+</div>
+
+<!-- 사용 상황 -->
+<div class="section">
+<h3>📍 실제 사용 상황</h3>
+
+<p class="desc">
+도매가 12,000원 상품 → AI가 가격 + 상세페이지 자동 생성
+</p>
+
+<div class="time-box">
+<div class="time">
+기존 방식<br>
+<strong>3~4시간</strong>
+</div>
+
+<div class="time" style="background:#dcfce7;">
+AI 자동화<br>
+<strong style="color:#16a34a;">5~10분</strong>
+</div>
+</div>
+
+<div class="result">
+💡 "상품 50개를 한 번에 처리하고 커피 한 잔!"
+</div>
+
+</div>
+
+</div>
+
+
+<div style="text-align:center; padding:30px 24px 10px;">
+  <img src="./images/2-2.png" alt="AI 콘텐츠 & 자동 가격 책정 - 기능 상세" loading="lazy" style="width:100%; max-width:520px; border-radius:14px; border:1px solid #E2E8F0; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+</div>
+
+<div style="text-align:center; padding:20px 0 30px;">
+  <a href="index.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; background:#2563EB; color:#fff; border-radius:10px; font-size:15px; font-weight:600; text-decoration:none; box-shadow:0 2px 8px rgba(37,99,235,0.3); transition:all 0.2s;">← 메인으로 돌아가기</a>
+  <a href="javascript:void(0)" onclick="openTrialPopup && openTrialPopup()" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; margin-left:10px; background:#F59E0B; color:#1a1a1a; border-radius:10px; font-size:15px; font-weight:600; text-decoration:none; box-shadow:0 2px 8px rgba(245,158,11,0.3);">무료체험신청서제출</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자동 상품 등록</title>
+
+<style>
+body {
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    background: #f4f6fb;
+}
+
+.container {
+    max-width: 480px;
+    margin: auto;
+    padding: 20px;
+}
+
+.badge {
+    background: #16a34a;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    display: inline-block;
+}
+
+h1 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.highlight {
+    color: #16a34a;
+}
+
+.desc {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.section {
+    background: white;
+    padding: 18px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.feature {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.green { background: #22c55e; }
+.blue { background: #3b82f6; }
+.purple { background: #8b5cf6; }
+.orange { background: #f59e0b; }
+.teal { background: #14b8a6; }
+
+.flow-box {
+    background: #ecfdf5;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.arrow {
+    text-align: center;
+    color: #888;
+}
+
+.result {
+    background: #dcfce7;
+    padding: 14px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.schedule {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.time {
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 10px;
+    width: 32%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.quote {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+    color: #444;
+}
+
+img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="badge">Step 3</div>
+
+<h1>
+<span class="highlight">자동 상품 등록</span><br>
+(Omni-Channel)
+</h1>
+
+<p class="desc">
+가공된 상품을 쇼핑몰 + 소매 밴드에 동시에 업로드<br>
+고객은 글을 보자마자 바로 결제까지 진행합니다
+</p>
+
+<!-- 이미지 -->
+<img src="step3-omnichannel.png" alt="자동 상품 등록">
+
+<!-- 자동화 흐름 -->
+<div class="section">
+<h3>⚙️ 자동화 흐름</h3>
+
+<div class="flow-box">상품 준비 완료</div>
+<div class="arrow">↓</div>
+<div class="flow-box">쇼핑몰 자동 등록</div>
+<div class="arrow">↓</div>
+<div class="flow-box">밴드 자동 게시</div>
+<div class="arrow">↓</div>
+<div class="flow-box">결제 링크 생성</div>
+<div class="arrow">↓</div>
+<div class="flow-box">고객 즉시 구매</div>
+
+</div>
+
+<!-- 기능 -->
+<div class="section">
+<h3>📌 핵심 기능</h3>
+
+<div class="feature">
+<div class="icon green">1</div>
+<div>쇼핑몰 자동 등록 + 결제링크 생성</div>
+</div>
+
+<div class="feature">
+<div class="icon blue">2</div>
+<div>소매 밴드 자동 게시</div>
+</div>
+
+<div class="feature">
+<div class="icon purple">3</div>
+<div>토스페이먼츠 결제 페이지 자동 생성</div>
+</div>
+
+<div class="feature">
+<div class="icon orange">4</div>
+<div>예약 발행 (시간 설정 가능)</div>
+</div>
+
+<div class="feature">
+<div class="icon teal">5</div>
+<div>옵션/수량 자동 반영</div>
+</div>
+
+</div>
+
+<!-- 예약 발행 -->
+<div class="section">
+<h3>⏰ 예약 자동 게시</h3>
+
+<div class="schedule">
+<div class="time">09:00<br>자동 게시</div>
+<div class="time">11:00<br>자동 게시</div>
+<div class="time">16:00<br>자동 게시</div>
+</div>
+
+<div class="result">
+원하는 시간에 자동 업로드
+</div>
+
+</div>
+
+<!-- 사용 상황 -->
+<div class="section">
+<h3>📍 실제 사용 상황</h3>
+
+<p class="desc">
+도매 상품 20개를 하루 3번 자동 업로드
+</p>
+
+<div class="result">
+👉 어디에 있어도 자동 판매 진행
+</div>
+
+<div class="quote">
+💡 "고객은 댓글 없이 바로 결제합니다"
+</div>
+
+</div>
+
+<!-- 결제 설명 -->
+<div class="section">
+<h3>💳 결제 방식</h3>
+
+<div class="feature">
+<div class="icon blue">카</div>
+<div>카드 결제 (즉시 승인)</div>
+</div>
+
+<div class="feature">
+<div class="icon green">계</div>
+<div>계좌 입금 (계좌 자동 안내)</div>
+</div>
+
+<div class="result">
+댓글 주문 없이 자동 결제 완료
+</div>
+
+</div>
+
+</div>
+
+
+<div style="text-align:center; padding:30px 24px 10px;">
+  <img src="./images/3-2.png" alt="자동 상품 등록 - 기능 상세" loading="lazy" style="width:100%; max-width:520px; border-radius:14px; border:1px solid #E2E8F0; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+</div>
+
+<div style="text-align:center; padding:20px 0 30px;">
+  <a href="index.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; background:#2563EB; color:#fff; border-radius:10px; font-size:15px; font-weight:600; text-decoration:none; box-shadow:0 2px 8px rgba(37,99,235,0.3); transition:all 0.2s;">← 메인으로 돌아가기</a>
+  <a href="javascript:void(0)" onclick="openTrialPopup && openTrialPopup()" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; margin-left:10px; background:#F59E0B; color:#1a1a1a; border-radius:10px; font-size:15px; font-weight:600; text-decoration:none; box-shadow:0 2px 8px rgba(245,158,11,0.3);">무료체험신청서제출</a>
+</div>
+</body>
+</html>

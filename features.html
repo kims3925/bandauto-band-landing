@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5가지 핵심 기능 - 밴드오토</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --primary: #2563EB;
+  --primary-light: #3B82F6;
+  --primary-dark: #1D4ED8;
+  --accent: #F59E0B;
+  --bg: #FFFFFF;
+  --bg-alt: #F8FAFC;
+  --text: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: #E2E8F0;
+  --success: #10B981;
+  --radius: 16px;
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: var(--text);
+  background: #f5f7fb;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+.page-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1E40AF 100%);
+  color: #fff;
+  padding: 100px 24px 60px;
+  text-align: center;
+}
+.page-header h1 {
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.page-header p {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.page-header .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  transition: color 0.15s;
+}
+.page-header .back-link:hover { color: #fff; }
+
+/* ── Flow Section ── */
+.flow-section {
+  max-width: 900px;
+  margin: -40px auto 0;
+  padding: 0 24px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.flow-container {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+.flow-title {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(37,99,235,0.08);
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 32px;
+}
+
+.flow-title-wrap {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* ── Vertical Flow ── */
+.flow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.flow-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  padding-bottom: 40px;
+}
+.flow-item:last-child { padding-bottom: 0; }
+
+/* Vertical line */
+.flow-item::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 56px;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--border) 0%, transparent 100%);
+}
+.flow-item:last-child::before { display: none; }
+
+.flow-step-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.flow-step-circle.s1 { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+.flow-step-circle.s2 { background: linear-gradient(135deg, #22C55E, #16A34A); }
+.flow-step-circle.s3 { background: linear-gradient(135deg, #F59E0B, #D97706); }
+.flow-step-circle.s4 { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+.flow-step-circle.s5 { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
+
+.flow-content {
+  flex: 1;
+  background: var(--bg-alt);
+  border-radius: 14px;
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  transition: all 0.25s;
+}
+.flow-content:hover {
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.flow-content .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.flow-content .tag.t1 { background: rgba(59,130,246,0.1); color: #2563EB; }
+.flow-content .tag.t2 { background: rgba(34,197,94,0.1); color: #16A34A; }
+.flow-content .tag.t3 { background: rgba(245,158,11,0.1); color: #D97706; }
+.flow-content .tag.t4 { background: rgba(139,92,246,0.1); color: #7C3AED; }
+.flow-content .tag.t5 { background: rgba(37,99,235,0.1); color: #1D4ED8; }
+
+.flow-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.flow-content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+.flow-content .detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.flow-content .detail-link:hover { gap: 10px; }
+
+/* ── Arrow between items ── */
+.flow-arrow {
+  text-align: center;
+  padding: 0 0 0 28px;
+  margin: -16px 0 -16px;
+  position: relative;
+  z-index: 1;
+}
+.flow-arrow span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+/* ── Summary Box ── */
+.summary-box {
+  margin-top: 40px;
+  background: linear-gradient(135deg, #EEF2FF, #E0F2FE);
+  border-radius: 14px;
+  padding: 28px 32px;
+  text-align: center;
+  border: 1px solid rgba(37,99,235,0.15);
+}
+.summary-box strong {
+  display: block;
+  font-size: 18px;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+.summary-box p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ── Bottom CTA ── */
+.bottom-cta {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-back {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-back:hover { background: var(--bg-alt); }
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+/* ── Feature Image ── */
+.feature-images-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+.feature-images-container {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  text-align: center;
+}
+.feature-images-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+.feature-img-main {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 640px) {
+  .flow-container { padding: 28px 20px; }
+  .flow-item { gap: 16px; }
+  .flow-step-circle { width: 44px; height: 44px; font-size: 18px; }
+  .flow-item::before { left: 21px; top: 44px; }
+  .flow-content { padding: 18px 20px; }
+  .flow-content h3 { font-size: 16px; }
+  .page-header { padding: 80px 20px 48px; }
+  .summary-box { padding: 22px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<div class="page-header">
+  <a href="index.html" class="back-link">&larr; 메인으로 돌아가기</a>
+  <h1>5가지 핵심 기능</h1>
+  <p>상품 소싱부터 발주까지, 하나의 시스템에서 완성하는<br>원스톱 자동화 프로세스</p>
+</div>
+
+<!-- ── Flow ── -->
+<div class="flow-section">
+  <div class="flow-container">
+    <div class="flow-title-wrap">
+      <span class="flow-title">자동화 프로세스 한눈에 보기</span>
+    </div>
+
+    <div class="flow-list">
+
+      <!-- Step 1 -->
+      <div class="flow-item">
+        <div class="flow-step-circle s1">1</div>
+        <div class="flow-content">
+          <span class="tag t1">Smart Sourcing</span>
+          <h3>상품 소싱</h3>
+          <p>도매밴드에서 상품을 실시간 모니터링하여 원하는 상품만 내 보관함으로 즉시 수집합니다. 사진 저장, 가격 확인, 상품 정보 관리까지 클릭 한 번이면 끝.</p>
+          <a href="step1.html" class="detail-link">상세 보기 &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-item">
+        <div class="flow-step-circle s2">2</div>
+        <div class="flow-content">
+          <span class="tag t2">AI Intelligence</span>
+          <h3>AI 상세페이지 생성</h3>
+          <p>AI가 도매가를 분석하여 최적 소매가를 자동 책정하고, 구매 욕구를 자극하는 상세페이지를 자동 생성합니다. 이미지와 설명 자동 구성으로 디자인 고민 끝.</p>
+          <a href="step2.html" class="detail-link">상세 보기 &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-item">
+        <div class="flow-step-circle s3">3</div>
+        <div class="flow-content">
+          <span class="tag t3">Omni-Channel</span>
+          <h3>쇼핑몰/밴드 등록</h3>
+          <p>가공된 상품을 내 쇼핑몰과 소매밴드에 동시 업로드합니다. 밴드 게시물에는 결제 링크가 자동 탑재되어 고객이 어디서든 바로 결제 가능.</p>
+          <a href="step3.html" class="detail-link">상세 보기 &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-item">
+        <div class="flow-step-circle s4">4</div>
+        <div class="flow-content">
+          <span class="tag t4">Unified Order</span>
+          <h3>고객 주문 및 결제</h3>
+          <p>소매밴드를 통해 들어온 모든 주문이 쇼핑몰로 자동 수집됩니다. 주문 확인, 옵션 선택, 현금/카드 결제 처리까지 누락 없이 실시간 기록.</p>
+          <a href="step4.html" class="detail-link">상세 보기 &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flow-item">
+        <div class="flow-step-circle s5">5</div>
+        <div class="flow-content">
+          <span class="tag t5">One-Click Fulfillment</span>
+          <h3>주문 접수 / 발주</h3>
+          <p>수집된 주문을 클릭 한 번으로 도매처별 맞춤 양식(엑셀/텍스트)으로 변환하여 발주서를 자동 생성합니다. 수백 건의 주문도 버튼 하나면 끝.</p>
+          <a href="step5.html" class="detail-link">상세 보기 &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-box">
+      <strong>이 모든 과정을 하나의 시스템에서!</strong>
+      <p>상품 소싱부터 발주까지 원스톱 자동화 &mdash; 사장님은 전략과 고객에만 집중하세요.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Feature Overview Image ── -->
+<div class="feature-images-section">
+  <div class="feature-images-container">
+    <h3 class="feature-images-title">5가지 주요 기능 한눈에 보기</h3>
+    <img src="./images/0-2.png" alt="5가지 주요 기능 정리" class="feature-img-main" loading="lazy">
+  </div>
+</div>
+
+<!-- ── Bottom CTAs ── -->
+<div class="bottom-cta">
+  <a href="index.html" class="btn btn-back">&larr; 메인으로 돌아가기</a>
+  <a href="index.html#form" class="btn btn-primary" onclick="sessionStorage.setItem('openTrial','1')">무료체험신청서제출 &rarr;</a>
+</div>
+
+<script>
+/* Auto-open trial popup on landing page if flag set */
+window.addEventListener('pageshow', () => {
+  if (sessionStorage.getItem('openTrial') === '1') {
+    sessionStorage.removeItem('openTrial');
+  }
+});
+</script>
+
+</body>
+</html>
