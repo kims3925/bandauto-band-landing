@@ -118,31 +118,34 @@ for (const p of DEMO.products.filter((x) => x.state !== 'out')) {
 
 /* ── 4. 마스킹 ──────────────────────────────────────── */
 console.log('\n ⑤ 마스킹 — 실데이터가 남아 있으면 안 된다')
-const forbidden = [
-  ['가족함께수산',            '실제 고객 밴드명'],
-  ['withfamily',              '실제 고객 밴드 URL'],
-  ['band.us/@',               '실제 밴드 주소'],
-  ['snsauto.abcpharm.net',    '운영 관리자 주소'],
-  ['abcpharm',                '운영 도메인'],
-  ['catricia2022',            '실제 매니저 계정'],
-  ['terror8710',              '실제 매니저 계정'],
-  ['jins3925',                '실제 어드민 계정'],
-  ['sk-ant-',                 'API 키'],
-  ['AIzaSy',                  'API 키'],
-  ['Bearer ',                 '토큰'],
-]
-for (const [needle, why] of forbidden) {
+// 금지 문자열은 데이터 세트(demo-data.js)가 관리한다 — 한 곳에서만 늘린다.
+const forbidden = DEMO.blacklist
+for (const needle of forbidden) {
   const hits = all.filter(([, doc]) => doc.includes(needle)).map(([f]) => f)
-  if (hits.length === 0) ok(`${needle} 없음 (${why})`)
-  else bad(`${needle} 발견 → ${hits.join(', ')} (${why})`)
+  if (hits.length === 0) ok(`${needle} 없음`)
+  else bad(`${needle} 발견 → ${hits.join(', ')}`)
 }
 
-// 전화번호는 실제로 배정되지 않는 010-0000-#### 대역만
-const phoneRe = /01[016789]-?\d{3,4}-?\d{4}/g
+// 가공 상호가 블랙리스트와 겹치지 않는지 (실존 업체와 겹치면 항의가 들어온다)
+const shopNames = [DEMO.shop.name, DEMO.shop.bandName, DEMO.shop.mallName,
+                   ...DEMO.wholesalers.map((w) => w.name)]
+for (const nm of shopNames) {
+  const clash = forbidden.find((b) => nm.includes(b) || b.includes(nm))
+  if (clash) bad(`가상 상호 "${nm}" 가 금지 목록 "${clash}" 과 겹침`)
+  else ok(`가상 상호 "${nm}" — 금지 목록과 겹치지 않음`)
+}
+// 상호는 화면에서 실제로 쓰이고 있어야 한다 (교체 누락 방지)
 for (const [f, doc] of all) {
-  const found = (doc.match(phoneRe) || []).filter((n) => !n.startsWith('010-0000'))
-  if (found.length === 0) ok(`${f} — 실제 번호 대역 없음`)
-  else bad(`${f} 에 010-0000 이외 번호: ${[...new Set(found)].join(', ')}`)
+  if (doc.includes(DEMO.shop.name)) ok(`${f} — 상호 "${DEMO.shop.name}" 사용`)
+  else bad(`${f} 에 상호 "${DEMO.shop.name}" 가 없음 — 교체 누락 의심`)
+}
+
+// 전화번호: 배정되지 않는 010-0000 대역 + 뒷자리 **** 마스킹만 허용
+const phoneRe = /01[016789][-\s]?[\d*]{3,4}[-\s]?[\d*]{4}/g
+for (const [f, doc] of all) {
+  const found = (doc.match(phoneRe) || []).filter((n) => !/^010-0000-\*{4}$/.test(n))
+  if (found.length === 0) ok(`${f} — 번호는 010-0000-**** 형태만`)
+  else bad(`${f} 에 마스킹되지 않은 번호: ${[...new Set(found)].join(', ')}`)
 }
 
 /* ── 5. 화면 규격 ───────────────────────────────────── */
@@ -165,8 +168,42 @@ for (const [f, doc] of all) {
   else bad(`${f} — 누락: ${miss.join(', ')}`)
 }
 
+/* ── 5-b. 기준일이 굳어 있지 않은가 ──────────────────
+   날짜를 HTML 에 박아 두면 시간이 갈수록 낡아 보인다. 석 달 뒤에 들어온 사장님이
+   석 달 전 날짜의 "오늘 매출"을 보면 관리하지 않는 제품처럼 보인다. */
+console.log('\n ⑦ 기준일이 하드코딩돼 있지 않은가')
+if (DEMO.today && DEMO.today.date instanceof Date && DEMO.today.date.getDay() === 5)
+  ok(`기준일이 계산값이고 금요일이다 — ${DEMO.today.label}`)
+else
+  bad('기준일이 계산되지 않거나 금요일이 아니다')
+
+// 화면에 적힌 날짜는 전부 data-demo-date(-short) 안에 있어야 한다.
+const dateRe = /\d{1,2}월\s*\d{1,2}일/g
+for (const [f, doc] of all) {
+  // data-demo-date 속성이 붙은 span 안의 날짜는 스크립트가 덮어쓰므로 제외
+  const stripped = doc.replace(/<span[^>]*data-demo-date(?:-short)?[^>]*>[^<]*<\/span>/g, '')
+  const left = stripped.match(dateRe) || []
+  if (left.length === 0) ok(`${f} — 굳은 날짜 없음`)
+  else bad(`${f} 에 data-demo-date 밖의 날짜: ${[...new Set(left)].join(', ')}`)
+}
+
+/* ── 5-c. 마진율(%)이 노출되지 않는가 ────────────────
+   랜딩은 공개 페이지라 소매 고객도 본다. 원가 대비 몇 % 를 붙이는지
+   공개적으로 알리지 않는다 (2026-08-25 사장님 결정). */
+console.log('\n ⑧ 마진율(%)이 화면에 노출되지 않는가')
+const marginRe = /\d{1,3}\.\d\s*%|마진율/g
+for (const [f, doc] of all) {
+  const hits = doc.match(marginRe) || []
+  if (hits.length === 0) ok(`${f} — 마진율 표기 없음`)
+  else bad(`${f} 에 마진율 표기: ${[...new Set(hits)].join(', ')}`)
+}
+if (DEMO.products.every((p) => p.margin === undefined))
+  ok('데이터 세트에도 margin 필드가 없다')
+else
+  bad('demo-data.js 에 margin 필드가 남아 있다')
+
 /* ── 6. API 호출·인증 스크립트가 남아 있지 않은가 ────── */
-console.log('\n ⑦ 정적 데모에 API·인증 흔적이 없는가')
+console.log('\n ⑨ 정적 데모에 API·인증 흔적이 없는가')
 const apiRe = /(fetch\s*\(|XMLHttpRequest|axios|\/api\/|localStorage\.getItem\(['"]token)/
 for (const [f, doc] of all) {
   if (!apiRe.test(doc)) ok(`${f} — API 호출 없음`)

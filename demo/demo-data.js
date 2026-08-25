@@ -9,19 +9,40 @@
  * ★ 실데이터 금지
  *   고객 실명·연락처·주소, 실제 밴드명(가족함께수산 등), 도매처 실상호, 도매 단가,
  *   결제 승인번호, 사업자번호, 실제 매출 절대액은 이 파일에 절대 넣지 않습니다.
- *   전화번호는 실제로 배정되지 않는 010-0000-#### 대역만 씁니다.
+ *   전화번호는 실제로 배정되지 않는 010-0000 대역을 쓰고 뒷자리는 **** 로 가립니다.
+ *   상호는 실존 업체와 겹치지 않도록 "예시" 를 붙인 가공 이름만 씁니다.
+ *
+ * ★ 기준일은 하드코딩하지 않습니다 (2026-08-25 수정)
+ *   날짜를 박아 두면 석 달 뒤에 들어온 사장님이 석 달 전 날짜의 "오늘 매출"을 봅니다.
+ *   관리하지 않는 제품처럼 보이므로, **가장 최근 금요일**을 매번 계산합니다.
+ *   금요일로 고정하는 이유는 주문이 몰리는 요일이라 화면이 비어 보이지 않기 때문입니다.
+ *   금액·건수는 그대로 두므로 요일 곡선의 앞뒤가 맞습니다.
  */
 
 const DEMO = {
   /* ── 가게와 기준일 ─────────────────────────────────── */
+  // 실존 업체와 겹치면 그쪽에서 항의가 들어온다. "예시" 를 붙여 검색해도 걸리지 않는
+  // 가공 상호만 쓴다. 실제 고객 밴드명(가족함께수산 등)은 절대 넣지 않는다.
   shop: {
-    name: '바다애수산',            // 가상 상호 (실제 고객 밴드명 사용 금지)
-    bandName: '바다애수산 소매밴드',
-    mallName: '바다애수산 쇼핑몰',
+    name: '예시수산',
+    bandName: '예시수산 소매밴드',
+    mallName: '예시수산 쇼핑몰',
   },
-  // 기준일을 요일까지 고정 — 화면마다 "오늘"이 어긋나지 않게 한다.
-  // 금요일은 주문이 몰리는 날이라 화면이 비어 보이지 않는다.
-  today: { iso: '2026-08-21', label: '8월 21일 (금)', deadline: '오후 3시 마감' },
+  // 가장 최근 금요일(오늘이 금요일이면 오늘). 화면마다 "오늘"이 어긋나지 않도록
+  // 이 한 곳에서만 계산하고, 모든 화면이 여기서 값을 읽는다.
+  today: (function () {
+    const now = new Date()
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+    d.setDate(d.getDate() - ((d.getDay() - 5 + 7) % 7))   // 5 = 금요일
+    const mm = d.getMonth() + 1
+    const dd = d.getDate()
+    return {
+      date: d,
+      short: `${mm}월 ${dd}일`,
+      label: `${mm}월 ${dd}일 (금)`,
+      deadline: '오후 3시 마감',
+    }
+  })(),
 
   /* ── 도매처 3곳 (발주서가 "도매처별 양식"을 보이려면 최소 3곳) ── */
   wholesalers: [
@@ -30,17 +51,21 @@ const DEMO = {
     { id: 'C', name: '도매처 C', deadline: '16:00', format: '엑셀' },
   ],
 
-  /* ── 상품 8종 — 소싱·AI가격·상품목록·발주서가 공유 ────── */
+  /* ── 상품 8종 — 소싱·AI가격·상품목록·발주서가 공유 ──────
+     ⚠️ 마진율(%)은 데이터에도 화면에도 두지 않는다 (2026-08-25 사장님 결정).
+        랜딩은 공개 페이지라 소매 고객도 본다. 원가 대비 몇 % 를 붙이는지
+        공개적으로 알리는 셈이 되므로 비율 표기는 쓰지 않는다.
+        배송비는 4,000원 기준. */
   // 품절 1종과 매진임박 2종을 일부러 섞었다. 전부 판매중이면 재고 기능이 화면에 안 드러난다.
   products: [
-    { id: 1, name: '통영 생굴 1kg',      emoji: '🦪', cost: 12000, price: 18900, margin: 36.5, stock: 20, left: 3,  vendor: 'A', state: 'soon' },
-    { id: 2, name: '손질 갈치 (대) 2미',  emoji: '🐟', cost: 15500, price: 23900, margin: 35.1, stock: 30, left: 12, vendor: 'A', state: 'on'   },
-    { id: 3, name: '반건조 가자미 5미',   emoji: '🐠', cost: 11000, price: 17900, margin: 38.5, stock: 25, left: 18, vendor: 'A', state: 'on'   },
-    { id: 4, name: '완도 활전복 10미',    emoji: '🐚', cost: 28000, price: 42900, margin: 34.7, stock: 12, left: 4,  vendor: 'B', state: 'soon' },
-    { id: 5, name: '제주 옥돔 3미',       emoji: '🐡', cost: 22000, price: 33900, margin: 35.1, stock: 15, left: 9,  vendor: 'B', state: 'on'   },
-    { id: 6, name: '법성포 굴비 10미',    emoji: '🍢', cost: 32000, price: 48900, margin: 34.6, stock: 10, left: 6,  vendor: 'B', state: 'on'   },
-    { id: 7, name: '국산 새우살 500g',    emoji: '🦐', cost: 9800,  price: 15900, margin: 38.4, stock: 25, left: 0,  vendor: 'C', state: 'out'  },
-    { id: 8, name: '손질 오징어 1kg',     emoji: '🦑', cost: 8500,  price: 13900, margin: 38.8, stock: 40, left: 22, vendor: 'C', state: 'on'   },
+    { id: 1, name: '통영 생굴 1kg',      emoji: '🦪', cost: 12000, price: 18900, stock: 20, left: 3,  vendor: 'A', state: 'soon' },
+    { id: 2, name: '손질 갈치 (대) 2미',  emoji: '🐟', cost: 15500, price: 23900, stock: 30, left: 12, vendor: 'A', state: 'on'   },
+    { id: 3, name: '반건조 가자미 5미',   emoji: '🐠', cost: 11000, price: 17900, stock: 25, left: 18, vendor: 'A', state: 'on'   },
+    { id: 4, name: '완도 활전복 10미',    emoji: '🐚', cost: 28000, price: 42900, stock: 12, left: 4,  vendor: 'B', state: 'soon' },
+    { id: 5, name: '제주 옥돔 3미',       emoji: '🐡', cost: 22000, price: 33900, stock: 15, left: 9,  vendor: 'B', state: 'on'   },
+    { id: 6, name: '법성포 굴비 10미',    emoji: '🍢', cost: 32000, price: 48900, stock: 10, left: 6,  vendor: 'B', state: 'on'   },
+    { id: 7, name: '국산 새우살 500g',    emoji: '🦐', cost: 9800,  price: 15900, stock: 25, left: 0,  vendor: 'C', state: 'out'  },
+    { id: 8, name: '손질 오징어 1kg',     emoji: '🦑', cost: 8500,  price: 13900, stock: 40, left: 22, vendor: 'C', state: 'on'   },
   ],
 
   /* ── 오늘 지표 — 대시보드 카드에 그대로 ───────────────── */
@@ -60,14 +85,14 @@ const DEMO = {
 
   /* ── 고객 8명 — 실제로 배정되지 않는 번호 대역만 ───────── */
   customers: [
-    { name: '김O진', phone: '010-0000-1042' },
-    { name: '박O수', phone: '010-0000-2318' },
-    { name: '이O민', phone: '010-0000-3771' },
-    { name: '정O아', phone: '010-0000-4265' },
-    { name: '최O호', phone: '010-0000-5190' },
-    { name: '강O빈', phone: '010-0000-6823' },
-    { name: '윤O래', phone: '010-0000-7508' },
-    { name: '한O결', phone: '010-0000-8934' },
+    { name: '김O진', phone: '010-0000-****' },
+    { name: '박O수', phone: '010-0000-****' },
+    { name: '이O민', phone: '010-0000-****' },
+    { name: '정O아', phone: '010-0000-****' },
+    { name: '최O호', phone: '010-0000-****' },
+    { name: '강O빈', phone: '010-0000-****' },
+    { name: '윤O래', phone: '010-0000-****' },
+    { name: '한O결', phone: '010-0000-****' },
   ],
 
   /* ── 좌측 메뉴 — 실제 관리자 패널과 동일 구성 ───────────
@@ -113,6 +138,16 @@ const DEMO = {
     { file: 'manager-approve.html',  title: '발행 승인함',          step: 'Step 3' },
     { file: 'manager-orders.html',   title: '통합 주문',            step: 'Step 4' },
     { file: 'manager-purchase.html', title: '원클릭 발주서',        step: 'Step 5' },
+  ],
+
+  /* ── 검사기(check-demo.mjs)가 쓰는 금지 문자열 ──────────
+     실제 고객·운영 식별자가 데모에 새어 들어오면 잡아낸다. */
+  blacklist: [
+    '가족함께수산', 'withfamily', 'band.us/@',
+    '경영매니저', '경영푸드', '경영반찬', '장해정',
+    'snsauto', 'abcpharm', 'hublink.im/sourcing',
+    'catricia2022', 'terror8710', 'jins3925',
+    'sk-ant-', 'AIzaSy', 'Bearer ',
   ],
 
   /* ── 랜딩 주소 (돌아가기·신청 버튼) ─────────────────── */

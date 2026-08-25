@@ -30,6 +30,18 @@
     if (typeof window.gtag === 'function') window.gtag('event', name, params || {})
   }
 
+  /* ── 기준일 채우기 ──────────────────────────────────
+     날짜를 HTML 에 박아 두면 시간이 갈수록 낡아 보인다. 석 달 뒤에 들어온 사장님이
+     석 달 전 날짜의 "오늘 매출"을 보면 관리하지 않는 제품처럼 보인다.
+     demo-data.js 가 계산한 "가장 최근 금요일"을 여기서 채운다.
+     HTML 에는 사람이 읽을 수 있는 기본값을 남겨 둬 스크립트가 막혀도 빈칸이 되지 않는다. */
+  document.querySelectorAll('[data-demo-date]').forEach(function (el) {
+    el.textContent = D.today.label
+  })
+  document.querySelectorAll('[data-demo-date-short]').forEach(function (el) {
+    el.textContent = D.today.short
+  })
+
   var idx = D.tour.findIndex(function (t) { return t.file === here })
   var cur = idx >= 0 ? D.tour[idx] : null
 
