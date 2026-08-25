@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>통합 주문 — 밴드오토 관리자 화면 미리보기</title>
+<meta name="description" content="밴드 댓글 주문과 쇼핑몰 주문, 카드결제와 무통장입금이 한 화면에 모입니다. 중량·손질 여부 같은 옵션과 배송메모까지 누락 없이 기록됩니다. 가입 없이 열리는 미리보기입니다.">
+<link rel="canonical" href="https://band.hublink.im/demo/manager-orders.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="통합 주문 — 밴드오토 관리자 화면 미리보기">
+<meta property="og:description" content="카드·무통장 주문이 한 화면에. 샘플 데이터로 채운 실제 화면입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body data-screen="manager-orders.html">
+
+<div class="demobar">
+  <span class="msg">미리보기 화면입니다. 숫자와 상품 정보는 <b>샘플</b>이며, 일부 버튼은 동작하지 않습니다.</span>
+  <a href="../index.html">← 랜딩으로</a>
+  <a href="../index.html#apply" class="cta">무료체험 신청</a>
+</div>
+
+<div class="shell">
+  <aside class="side"></aside>
+  <div class="main">
+    <header class="topbar">
+      <span class="date">8월 21일 (금) · 오후 3시 마감</span>
+      <div class="right">
+        <span class="chip">🧾 오늘 30건</span>
+        <span class="chip"><span class="dot"></span> 실시간 수집 중</span>
+      </div>
+    </header>
+
+    <div class="page">
+      <div class="page-head">
+        <h1>통합 주문 <span class="tag wait" style="vertical-align:middle">Step 4</span></h1>
+        <p class="does">이 화면에서 하는 일: 밴드 댓글 주문과 쇼핑몰 주문을 한 곳에서 확인하고 상태를 바꿉니다.</p>
+        <span class="scope">바다애수산 · 미리보기</span>
+      </div>
+
+      <section class="blk">
+        <div class="sec-head"><h2>오늘 주문 요약</h2><span>샘플 데이터 · 8월 21일</span></div>
+        <div class="stats">
+          <div class="stat"><div class="lbl">전체 주문</div><div class="row"><span class="v accent">30</span><span class="u">건</span></div><div class="note">합계 1,284,000원</div></div>
+          <div class="stat"><div class="lbl">카드 결제</div><div class="row"><span class="v">18</span><span class="u">건</span></div><div class="note">812,000원 · 자동 확인</div></div>
+          <div class="stat"><div class="lbl">무통장 입금</div><div class="row"><span class="v">12</span><span class="u">건</span></div><div class="note">472,000원 · 8건 확인</div></div>
+          <div class="stat"><div class="lbl">입금 대기</div><div class="row"><span class="v warn">4</span><span class="u">건</span></div><div class="note">158,000원</div></div>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="sec-head">
+          <h2>주문 목록</h2>
+          <span>옵션·배송메모가 그대로 붙어 들어옵니다</span>
+        </div>
+        <div class="scroller">
+          <table>
+            <thead>
+              <tr><th>시각</th><th>주문자</th><th>상품 · 옵션</th><th class="n">금액</th><th>결제</th><th>경로</th><th>상태</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="n">14:52</td><td class="name">김O진</td>
+                <td>🦪 통영 생굴 1kg<br><span style="font-size:12px;color:var(--text-muted)">옵션: 1kg · 세척 O &nbsp;|&nbsp; 메모: 부재 시 경비실</span></td>
+                <td class="n">18,900</td><td><span class="tag on">카드</span></td><td>밴드 댓글</td><td><span class="tag wait">신규</span></td>
+              </tr>
+              <tr>
+                <td class="n">14:38</td><td class="name">박O수</td>
+                <td>🐚 완도 활전복 10미<br><span style="font-size:12px;color:var(--text-muted)">옵션: 10미 · 손질 X &nbsp;|&nbsp; 메모: 금요일 도착 희망</span></td>
+                <td class="n">42,900</td><td><span class="tag on">카드</span></td><td>쇼핑몰</td><td><span class="tag wait">신규</span></td>
+              </tr>
+              <tr>
+                <td class="n">14:11</td><td class="name">이O민</td>
+                <td>🐟 손질 갈치 (대) 2미<br><span style="font-size:12px;color:var(--text-muted)">옵션: 대 2미 · 손질 O</span></td>
+                <td class="n">23,900</td><td><span class="tag done">무통장</span></td><td>밴드 댓글</td><td><span class="tag wait">입금대기</span></td>
+              </tr>
+              <tr>
+                <td class="n">13:47</td><td class="name">정O아</td>
+                <td>🐡 제주 옥돔 3미<br><span style="font-size:12px;color:var(--text-muted)">옵션: 3미 · 손질 O &nbsp;|&nbsp; 메모: 선물포장 부탁드려요</span></td>
+                <td class="n">33,900</td><td><span class="tag on">카드</span></td><td>밴드 댓글</td><td><span class="tag on">확인</span></td>
+              </tr>
+              <tr>
+                <td class="n">13:20</td><td class="name">최O호</td>
+                <td>🐠 반건조 가자미 5미</td>
+                <td class="n">17,900</td><td><span class="tag done">무통장</span></td><td>쇼핑몰</td><td><span class="tag on">입금확인</span></td>
+              </tr>
+              <tr>
+                <td class="n">12:58</td><td class="name">강O빈</td>
+                <td>🍢 법성포 굴비 10미<br><span style="font-size:12px;color:var(--text-muted)">메모: 아이스팩 넉넉히 넣어주세요</span></td>
+                <td class="n">48,900</td><td><span class="tag on">카드</span></td><td>밴드 댓글</td><td><span class="tag on">확인</span></td>
+              </tr>
+              <tr>
+                <td class="n">12:31</td><td class="name">윤O래</td>
+                <td>🦑 손질 오징어 1kg<br><span style="font-size:12px;color:var(--text-muted)">옵션: 1kg · 손질 O</span></td>
+                <td class="n">13,900</td><td><span class="tag done">무통장</span></td><td>밴드 댓글</td><td><span class="tag wait">입금대기</span></td>
+              </tr>
+              <tr>
+                <td class="n">11:54</td><td class="name">한O결</td>
+                <td>🦪 통영 생굴 1kg</td>
+                <td class="n">18,900</td><td><span class="tag on">카드</span></td><td>쇼핑몰</td><td><span class="tag on">확인</span></td>
+              </tr>
+              <tr>
+                <td class="n">11:22</td><td class="name">김O진</td>
+                <td>🐟 손질 갈치 (대) 2미<br><span style="font-size:12px;color:var(--text-muted)">메모: 지난번처럼 손질해 주세요</span></td>
+                <td class="n">23,900</td><td><span class="tag done">무통장</span></td><td>밴드 댓글</td><td><span class="tag on">입금확인</span></td>
+              </tr>
+              <tr>
+                <td class="n">10:47</td><td class="name">박O수</td>
+                <td>🐡 제주 옥돔 3미</td>
+                <td class="n">33,900</td><td><span class="tag on">카드</span></td><td>밴드 댓글</td><td><span class="tag on">확인</span></td>
+              </tr>
+              <tr>
+                <td class="n">10:15</td><td class="name">이O민</td>
+                <td>🐠 반건조 가자미 5미<br><span style="font-size:12px;color:var(--text-muted)">옵션: 5미 &nbsp;|&nbsp; 메모: 문 앞에 두세요</span></td>
+                <td class="n">17,900</td><td><span class="tag done">무통장</span></td><td>쇼핑몰</td><td><span class="tag wait">입금대기</span></td>
+              </tr>
+              <tr>
+                <td class="n">09:41</td><td class="name">정O아</td>
+                <td>🐚 완도 활전복 10미</td>
+                <td class="n">42,900</td><td><span class="tag on">카드</span></td><td>밴드 댓글</td><td><span class="tag on">확인</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:12.5px; color:var(--text-muted); margin:10px 2px 0">
+          1–12 / 전체 30건 · 나머지는 다음 쪽에 있습니다.
+        </p>
+      </section>
+
+      <section class="blk">
+        <div class="card" style="background:#EFF6FF; border-color:#BFDBFE">
+          <p style="margin:0; font-size:13.5px; color:var(--primary-dark)">
+            <strong>밴드 댓글로 들어온 주문도 여기로 모입니다.</strong>
+            댓글에 적힌 수량·옵션·배송메모를 읽어 주문서로 만들어 두기 때문에, 밤에 댓글을 다시 세어볼 일이 없습니다.
+            이 주문들은 <a href="manager-purchase.html" style="color:var(--primary-dark); text-decoration:underline">원클릭 발주서</a>에서
+            도매처별로 자동으로 갈립니다.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="foot">
+      이 화면은 <b>밴드오토 관리자 패널</b>의 미리보기입니다. 주문자 이름은 가상이고 연락처는 표시하지 않았으며,
+      금액·건수는 설명을 위해 만든 샘플입니다. 실제 고객 주문 정보가 아닙니다.<br>
+      다음 단계는 <a href="manager-purchase.html">원클릭 발주서</a>입니다.
+    </div>
+  </div>
+</div>
+
+<script src="demo-data.js"></script>
+<script src="demo-nav.js"></script>
+</body>
+</html>

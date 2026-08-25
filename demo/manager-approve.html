@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>발행 승인함 — 밴드오토 관리자 화면 미리보기</title>
+<meta name="description" content="밴드와 쇼핑몰에 나가기 전, 사장님이 확인하고 누르셔야 발행됩니다. 밴드별 문구 변형, 예약 발행 시간, 하루 발행 건수 한도까지 사장님이 정합니다. 밴드 계정 정지가 걱정되신다면 이 화면을 보세요.">
+<link rel="canonical" href="https://band.hublink.im/demo/manager-approve.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="발행 승인함 — 밴드오토 관리자 화면 미리보기">
+<meta property="og:description" content="자동으로 나가지 않습니다. 나가기 전에 사장님이 누르십니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body data-screen="manager-approve.html">
+
+<div class="demobar">
+  <span class="msg">미리보기 화면입니다. 숫자와 상품 정보는 <b>샘플</b>이며, 일부 버튼은 동작하지 않습니다.</span>
+  <a href="../index.html">← 랜딩으로</a>
+  <a href="../index.html#apply" class="cta">무료체험 신청</a>
+</div>
+
+<div class="shell">
+  <aside class="side"></aside>
+  <div class="main">
+    <header class="topbar">
+      <span class="date">8월 21일 (금) · 오후 3시 마감</span>
+      <div class="right">
+        <span class="chip mode">승인 모드</span>
+        <span class="chip">오늘 발행 6 / 20건</span>
+      </div>
+    </header>
+
+    <div class="page">
+      <div class="page-head">
+        <h1>발행 승인함 <span class="tag wait" style="vertical-align:middle">Step 3</span></h1>
+        <p class="does">이 화면에서 하는 일: 밴드·쇼핑몰에 나가기 전 마지막으로 확인하고 발행을 누릅니다.</p>
+        <span class="scope">바다애수산 · 미리보기</span>
+      </div>
+
+      <section class="blk">
+        <div class="card" style="background:#FFFBF0; border-color:#FDE68A">
+          <p style="margin:0; font-size:14px">
+            <strong>승인 모드가 켜져 있습니다.</strong>
+            사장님이 <span class="btn pri" style="cursor:default">발행</span> 을 누르기 전에는 밴드에도 쇼핑몰에도
+            아무것도 올라가지 않습니다. 발행 시간대와 하루 건수 한도도 사장님이 정하십니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="sec-head"><h2>오늘 발행 한도</h2><span>밴드 계정 보호를 위해 사장님이 정한 값</span></div>
+        <div class="stats">
+          <div class="stat"><div class="lbl">승인 대기</div><div class="row"><span class="v warn">3</span><span class="u">건</span></div><div class="note">아래에서 확인하실 수 있습니다</div></div>
+          <div class="stat"><div class="lbl">오늘 발행함</div><div class="row"><span class="v">6</span><span class="u">건</span></div><div class="note">09:20 · 10:40 두 차례</div></div>
+          <div class="stat"><div class="lbl">오늘 남은 한도</div><div class="row"><span class="v accent">14</span><span class="u">건</span></div><div class="note">하루 최대 20건 설정</div></div>
+          <div class="stat"><div class="lbl">다음 발행 시간</div><div class="row"><span class="v">15:30</span></div><div class="note">09:20 · 10:40 · 15:30</div></div>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="sec-head">
+          <h2>승인 대기 3건</h2>
+          <span>같은 상품이라도 밴드마다 문구를 다르게 내보냅니다</span>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin-bottom:10px">
+            <strong style="font-size:15.5px">🦪 통영 생굴 1kg</strong>
+            <span class="tag on">18,900원</span>
+            <span class="tag wait">밴드 2곳 + 쇼핑몰</span>
+            <span style="margin-left:auto; font-size:12.5px; color:var(--text-muted)">예약 15:30</span>
+          </div>
+          <div class="cols">
+            <div style="border:1px solid var(--border); border-radius:10px; padding:13px 15px; background:var(--bg-alt)">
+              <p style="margin:0 0 7px; font-size:12px; font-weight:700; color:var(--text-muted)">소매밴드 ①</p>
+              <p style="margin:0; font-size:13.5px; color:var(--text-secondary)">
+                오늘 아침 통영에서 올라온 <strong>생굴 1kg</strong>입니다 🦪<br>
+                알이 굵어 굴국·굴전 다 좋습니다. 오후 3시 마감이에요!<br>
+                <span style="color:var(--primary)">▶ 주문하기 (쇼핑몰 링크)</span>
+              </p>
+            </div>
+            <div style="border:1px solid var(--border); border-radius:10px; padding:13px 15px; background:var(--bg-alt)">
+              <p style="margin:0 0 7px; font-size:12px; font-weight:700; color:var(--text-muted)">소매밴드 ②</p>
+              <p style="margin:0; font-size:13.5px; color:var(--text-secondary)">
+                🦪 <strong>통영 생굴 1kg</strong> 들어왔습니다<br>
+                제철 굴이라 알이 실합니다. 당일 발송분만 받아요.<br>
+                <span style="color:var(--primary)">▶ 주문하기 (쇼핑몰 링크)</span>
+              </p>
+            </div>
+          </div>
+          <p style="margin:11px 0 0; font-size:12.5px; color:var(--text-muted)">
+            같은 글을 여러 밴드에 그대로 복사하면 밴드가 스팸으로 봅니다. 밴드마다 문구를 조금씩 바꿔 내보냅니다.
+          </p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
+            <span class="btn pri">발행</span><span class="btn">문구 수정</span><span class="btn">시간 변경</span><span class="btn gho">보류</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin-bottom:10px">
+            <strong style="font-size:15.5px">🐚 완도 활전복 10미</strong>
+            <span class="tag on">42,900원</span>
+            <span class="tag wait">밴드 2곳 + 쇼핑몰</span>
+            <span style="margin-left:auto; font-size:12.5px; color:var(--text-muted)">예약 15:30</span>
+          </div>
+          <div class="cols">
+            <div style="border:1px solid var(--border); border-radius:10px; padding:13px 15px; background:var(--bg-alt)">
+              <p style="margin:0 0 7px; font-size:12px; font-weight:700; color:var(--text-muted)">소매밴드 ①</p>
+              <p style="margin:0; font-size:13.5px; color:var(--text-secondary)">
+                완도 <strong>활전복 10미</strong> 들어왔습니다 🐚<br>
+                살아있는 채로 포장해 보냅니다. 남은 수량 얼마 없어요.<br>
+                <span style="color:var(--primary)">▶ 주문하기 (쇼핑몰 링크)</span>
+              </p>
+            </div>
+            <div style="border:1px solid var(--border); border-radius:10px; padding:13px 15px; background:var(--bg-alt)">
+              <p style="margin:0 0 7px; font-size:12px; font-weight:700; color:var(--text-muted)">소매밴드 ②</p>
+              <p style="margin:0; font-size:13.5px; color:var(--text-secondary)">
+                🐚 완도 <strong>활전복 10미</strong> — 오늘 들어온 물건입니다<br>
+                죽 끓이셔도 좋고 회로 드셔도 좋습니다.<br>
+                <span style="color:var(--primary)">▶ 주문하기 (쇼핑몰 링크)</span>
+              </p>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
+            <span class="btn pri">발행</span><span class="btn">문구 수정</span><span class="btn">시간 변경</span><span class="btn gho">보류</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin-bottom:10px">
+            <strong style="font-size:15.5px">🐡 제주 옥돔 3미</strong>
+            <span class="tag on">33,900원</span>
+            <span class="tag wait">밴드 2곳 + 쇼핑몰</span>
+            <span style="margin-left:auto; font-size:12.5px; color:var(--text-muted)">예약 15:30</span>
+          </div>
+          <div class="cols">
+            <div style="border:1px solid var(--border); border-radius:10px; padding:13px 15px; background:var(--bg-alt)">
+              <p style="margin:0 0 7px; font-size:12px; font-weight:700; color:var(--text-muted)">소매밴드 ①</p>
+              <p style="margin:0; font-size:13.5px; color:var(--text-secondary)">
+                제주 <strong>옥돔 3미</strong> 준비했습니다 🐡<br>
+                구워 드시면 담백합니다. 손질해서 보내드려요.<br>
+                <span style="color:var(--primary)">▶ 주문하기 (쇼핑몰 링크)</span>
+              </p>
+            </div>
+            <div style="border:1px solid var(--border); border-radius:10px; padding:13px 15px; background:var(--bg-alt)">
+              <p style="margin:0 0 7px; font-size:12px; font-weight:700; color:var(--text-muted)">소매밴드 ②</p>
+              <p style="margin:0; font-size:13.5px; color:var(--text-secondary)">
+                🐡 <strong>제주 옥돔 3미</strong> 오늘 들어왔습니다<br>
+                아이들 반찬으로도 좋습니다. 오후 3시 마감입니다.<br>
+                <span style="color:var(--primary)">▶ 주문하기 (쇼핑몰 링크)</span>
+              </p>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
+            <span class="btn pri">발행</span><span class="btn">문구 수정</span><span class="btn">시간 변경</span><span class="btn gho">보류</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="sec-head"><h2>밴드 계정 보호 설정</h2><span>자동화 설정에서 바꾸실 수 있습니다</span></div>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>항목</th><th>현재 설정</th><th>왜 필요한가</th></tr></thead>
+            <tbody>
+              <tr><td class="name">발행 방식</td><td><span class="tag mode" style="background:#EFF6FF;color:#1D4ED8">승인 후 발행</span></td><td>사장님이 누르기 전에는 나가지 않습니다</td></tr>
+              <tr><td class="name">하루 발행 한도</td><td>20건</td><td>하루에 너무 많이 올리면 밴드가 제한을 겁니다</td></tr>
+              <tr><td class="name">발행 시간대</td><td>09:20 · 10:40 · 15:30</td><td>새벽·심야 발행을 피합니다</td></tr>
+              <tr><td class="name">글 간격</td><td>60초</td><td>연속 등록을 스팸으로 보지 않도록 띄웁니다</td></tr>
+              <tr><td class="name">문구 변형</td><td><span class="tag on">켜짐</span></td><td>같은 글을 그대로 복사하면 스팸으로 걸립니다</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="foot">
+      이 화면은 <b>밴드오토 관리자 패널</b>의 미리보기입니다. 상품·문구·건수는 설명을 위해 만든 샘플이며,
+      실제 고객 밴드의 게시글이 아닙니다.<br>
+      승인해서 발행된 상품의 주문은 <a href="manager-orders.html">통합 주문 화면</a>으로 모입니다.
+    </div>
+  </div>
+</div>
+
+<script src="demo-data.js"></script>
+<script src="demo-nav.js"></script>
+</body>
+</html>

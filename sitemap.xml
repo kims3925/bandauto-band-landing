@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  band.hublink.im 사이트맵 (2026-08-25)
+  /demo/ 미리보기 화면은 색인을 "허용"한다 — "밴드 발주서 자동" 같은 검색어의 유입 경로가 된다.
+  각 데모의 canonical 은 자기 자신이고, 랜딩 푸터에서도 전부 링크해 크롤러가 찾아가게 해 두었다.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://band.hublink.im/</loc><lastmod>2026-08-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://band.hublink.im/features.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://band.hublink.im/demo/manager.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://band.hublink.im/demo/manager-sourcing.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://band.hublink.im/demo/manager-ai.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://band.hublink.im/demo/manager-approve.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://band.hublink.im/demo/manager-orders.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://band.hublink.im/demo/manager-purchase.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <url><loc>https://band.hublink.im/step1.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://band.hublink.im/step2.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://band.hublink.im/step3.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://band.hublink.im/step4.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://band.hublink.im/step5.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

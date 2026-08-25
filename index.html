@@ -581,6 +581,100 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
   transition: transform 0.3s ease; z-index: 300;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══════════════════════════════════════════════════════
+   관리자 패널 미리보기 · FAQ (2026-08-25 신설)
+   체험 신청 전에 "보는 문"을 하나 더 내기 위한 섹션.
+   ══════════════════════════════════════════════════════ */
+
+.preview { background: var(--bg-alt); }
+.preview-note {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #EFF6FF; border: 1px solid #BFDBFE; color: var(--primary-dark);
+  font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px; margin-top: 14px;
+}
+.preview-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+  gap: 14px; margin-top: 34px;
+}
+/* 카드 안에 축소 스크린샷을 넣으면 모바일에서 판독이 안 된다.
+   이름과 한 줄 설명만 두고 링크로 보낸다. */
+.preview-card {
+  display: block; background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow);
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.preview-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+/* 카드 전체가 <a> 라 전역 a 규칙의 밑줄이 제목·본문까지 번진다. 카드 안에서는 끈다. */
+.preview-card, .preview-card * { text-decoration: none; }
+.preview-card .step {
+  display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .04em;
+  color: var(--primary); background: #EFF6FF; padding: 3px 9px; border-radius: 999px; margin-bottom: 10px;
+}
+.preview-card .step.none { background: var(--bg-alt); color: var(--text-muted); }
+.preview-card h3 { font-size: 18px; font-weight: 700; margin: 0 0 7px; letter-spacing: -.01em; }
+.preview-card p { font-size: 14px; color: var(--text-secondary); margin: 0 0 14px; line-height: 1.65; }
+.preview-card .go { font-size: 14px; font-weight: 700; color: var(--primary); }
+.preview-card.key { border-color: var(--accent); border-width: 2px; }
+.preview-card.key .step { background: #FEF3C7; color: #B45309; }
+
+.preview-foot {
+  margin-top: 30px; background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 24px; text-align: center; box-shadow: var(--shadow);
+}
+.preview-foot .disc { font-size: 14px; color: var(--text-secondary); margin: 0 0 18px; line-height: 1.7; }
+.preview-foot .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FAQ ── */
+.faq-list { max-width: 760px; margin: 34px auto 0; }
+.faq-item {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  margin-bottom: 10px; overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer; list-style: none; padding: 17px 20px;
+  font-size: 16px; font-weight: 700; color: var(--text);
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.55;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::before { content: "Q"; color: var(--primary); font-weight: 800; flex: none; }
+.faq-item summary::after {
+  content: "+"; margin-left: auto; color: var(--text-muted); font-weight: 400;
+  font-size: 21px; line-height: 1; flex: none;
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item .a {
+  padding: 0 20px 18px 41px; font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin: 0;
+}
+.faq-item[open] summary { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 14px; }
+
+/* ── 히어로 CTA 보조 문구 ── */
+.hero-cta-note { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
+.hero-cta-note strong { color: var(--primary); }
+
+/* ── 푸터 미리보기 링크 ── */
+.footer-demos { margin: 26px auto 0; max-width: 760px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14); }
+.footer-demos .t { font-size: 13px; font-weight: 700; margin-bottom: 12px; opacity: .95; }
+.footer-demos ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; }
+.footer-demos a { font-size: 13.5px; opacity: .82; }
+.footer-demos a:hover { opacity: 1; text-decoration: underline; }
+
+/* ── 5단계 카드 보조 링크 ── */
+.step-links { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 4px; }
+/* 화면 링크는 설명 링크보다 시각적으로 강하게 — 더 많이 눌리길 원하는 쪽이다. */
+.step-screen-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 14px; font-weight: 700; color: #fff; background: var(--primary);
+  padding: 7px 14px; border-radius: 8px;
+}
+.step-screen-link:hover { background: var(--primary-dark); }
+
+@media (max-width: 768px) {
+  .preview-grid { grid-template-columns: 1fr; gap: 12px; }
+  .preview-foot { padding: 18px 16px; }
+  .faq-item summary { font-size: 15px; padding: 15px 16px; }
+  .faq-item .a { padding: 0 16px 16px 36px; font-size: 14.5px; }
+}
 </style>
 </head>
 <body>
@@ -591,9 +685,10 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
     <a href="#" class="nav-logo" onclick="goHome(event)">밴드<span>오토</span></a>
     <div class="nav-links">
       <a href="features.html">핵심 기능</a>
-      <a href="javascript:void(0)" onclick="openTrialPopup()">무료체험</a>
+      <a href="#preview" onclick="track('preview_nav_click',{from:'header'})">관리자 패널</a>
+      <a href="javascript:void(0)" onclick="openTrialPopup('header')">무료체험</a>
     </div>
-    <a href="javascript:void(0)" class="nav-cta" onclick="openTrialPopup()">무료체험신청서제출</a>
+    <a href="javascript:void(0)" class="nav-cta" onclick="openTrialPopup('header_cta')">무료체험신청서제출</a>
     <button class="nav-mobile-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="메뉴">
       <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
     </button>
@@ -619,10 +714,16 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
       </a>
     </div>
 
+    <!-- CTA 2분기 (2026-08-25): 마찰 0인 "보기"를 왼쪽에, 마찰 큰 "신청"을 오른쪽에.
+         보기가 신청을 데려오는 구조다. -->
     <div class="hero-cta">
-      <button class="btn btn-primary btn-lg" onclick="openTrialPopup()">🚀 무료체험신청서제출</button>
-      <a href="features.html" class="btn btn-outline btn-lg">핵심 기능 보기</a>
+      <a href="demo/manager.html" class="btn btn-primary btn-lg"
+         onclick="track('preview_open_click',{from:'hero'})">🖥️ 관리자 화면 미리보기</a>
+      <button class="btn btn-accent btn-lg" onclick="openTrialPopup('hero')">🚀 무료체험신청서제출 →</button>
     </div>
+    <p class="hero-cta-note">
+      <strong>가입 없이 바로 열립니다.</strong> 실제 관리자 화면을 샘플 데이터로 채워 뒀습니다.
+    </p>
   </div>
 </section>
 
@@ -648,6 +749,8 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
         <div class="value-icon">💰</div>
         <h3>매출 극대화</h3>
         <p>내 쇼핑몰과 밴드에 결제 링크를 포함해 실시간 동시 등록. 고객이 어디서든 바로 결제할 수 있는 환경을 만듭니다.</p>
+        <a href="demo/manager-approve.html" class="step-detail-link"
+           onclick="track('preview_open_click',{from:'values'})">발행 승인 화면 보기 →</a>
       </div>
     </div>
   </div>
@@ -753,7 +856,7 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
           <span class="step-tag">Smart Sourcing</span>
           <h3>스마트 소싱</h3>
           <p>도매 밴드의 신규 상품을 실시간 모니터링하여 원하는 상품만 내 보관함으로 즉시 수집합니다. 사진을 일일이 저장하고 수정하는 작업, 이제 클릭 한 번이면 끝입니다.</p>
-          <a href="step1.html" class="step-detail-link">자세히 보기 →</a>
+          <div class="step-links"><a href="step1.html" class="step-detail-link">자세히 보기 →</a><a href="demo/manager-sourcing.html" class="step-screen-link" onclick="track('preview_open_click',{from:'steps',screen:'demo/manager-sourcing.html'})">보관함 화면 보기 →</a></div>
         </div>
       </div>
 
@@ -763,7 +866,7 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
           <span class="step-tag">AI Intelligence</span>
           <h3>AI 콘텐츠 & 자동 가격 책정</h3>
           <p>AI가 도매가를 분석해 최적 소매가를 자동 책정하고, 구매 욕구를 자극하는 상세페이지를 자동 생성합니다. 복잡한 마진 계산과 디자인 작업은 AI 담당입니다.</p>
-          <a href="step2.html" class="step-detail-link">자세히 보기 →</a>
+          <div class="step-links"><a href="step2.html" class="step-detail-link">자세히 보기 →</a><a href="demo/manager-ai.html" class="step-screen-link" onclick="track('preview_open_click',{from:'steps',screen:'demo/manager-ai.html'})">가격 제안 화면 보기 →</a></div>
         </div>
       </div>
 
@@ -773,7 +876,7 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
           <span class="step-tag">Omni-Channel Posting</span>
           <h3>자동 상품 등록</h3>
           <p>가공된 상품 정보를 자사몰과 소매 밴드에 동시에 업로드합니다. 밴드 게시물에는 전용 결제 링크가 자동 탑재되어, 고객이 어디서든 바로 결제 가능합니다.</p>
-          <a href="step3.html" class="step-detail-link">자세히 보기 →</a>
+          <div class="step-links"><a href="step3.html" class="step-detail-link">자세히 보기 →</a><a href="demo/manager-approve.html" class="step-screen-link" onclick="track('preview_open_click',{from:'steps',screen:'demo/manager-approve.html'})">발행 승인함 보기 →</a></div>
         </div>
       </div>
 
@@ -783,7 +886,7 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
           <span class="step-tag">Unified Order</span>
           <h3>통합 주문 관리</h3>
           <p>소매 밴드를 통해 들어온 모든 주문이 쇼핑몰로 자동 수집됩니다. 주문 확인, 옵션 선택까지 누락 없이 실시간으로 기록합니다. 댓글 주문서에 밤샐 일이 사라집니다.</p>
-          <a href="step4.html" class="step-detail-link">자세히 보기 →</a>
+          <div class="step-links"><a href="step4.html" class="step-detail-link">자세히 보기 →</a><a href="demo/manager-orders.html" class="step-screen-link" onclick="track('preview_open_click',{from:'steps',screen:'demo/manager-orders.html'})">주문 화면 보기 →</a></div>
         </div>
       </div>
 
@@ -793,7 +896,7 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
           <span class="step-tag">One-Click Fulfillment</span>
           <h3>원클릭 발주</h3>
           <p>수집된 주문을 클릭 한 번으로 도매처별 맞춤 양식(엑셀/텍스트)으로 변환하여 발주서를 생성합니다. 수백 건의 주문도 버튼 하나면 발주 준비 끝입니다.</p>
-          <a href="step5.html" class="step-detail-link">자세히 보기 →</a>
+          <div class="step-links"><a href="step5.html" class="step-detail-link">자세히 보기 →</a><a href="demo/manager-purchase.html" class="step-screen-link" onclick="track('preview_open_click',{from:'steps',screen:'demo/manager-purchase.html'})">발주서 화면 보기 →</a></div>
         </div>
       </div>
 
@@ -801,17 +904,144 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
   </div>
 </section>
 
+
+<!-- ═══ 관리자 패널 미리보기 (2026-08-25 신설) ═══
+     이번 개편의 본체. 체험 신청 전에 사장님이 "내일 아침 어느 화면에서 뭘 누르는지"를
+     리허설하게 하는 섹션. 5단계 섹션 바로 아래에 둔다.
+
+     ⚠️ 완성된 화면만 노출한다. 카드를 깔아놓고 안 열리는 화면이 하나라도 있으면
+        나머지 카드의 신뢰까지 갉아먹는다. 2·3순위 5장은 완성 후 여기에 추가할 것. -->
+<section class="preview" id="preview">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-label">관리자 패널 미리보기</span>
+      <h2>체험 신청 전에,<br>관리자 화면부터 열어보세요</h2>
+      <p style="color:var(--text-secondary); margin-top:14px; font-size:16px; max-width:620px; margin-left:auto; margin-right:auto;">
+        가입도 로그인도 필요 없습니다. 실제 밴드오토 관리자 화면을 샘플 데이터로 채워 그대로 열어뒀습니다.
+        사장님이 내일 아침 어느 화면에서 무엇을 누르게 되는지, 지금 직접 확인하실 수 있습니다.
+      </p>
+      <div class="preview-note">🔓 가입 없이 바로 열립니다</div>
+    </div>
+
+    <div class="preview-grid">
+      <a class="preview-card" href="demo/manager.html"
+         onclick="track('preview_open_click',{from:'section',screen:'manager.html'})">
+        <span class="step none">한눈에</span>
+        <h3>오늘 대시보드</h3>
+        <p>오늘 매출, 신규 주문, 입금 대기, 발행 대기가 한 화면에.</p>
+        <span class="go">화면 열기 →</span>
+      </a>
+
+      <a class="preview-card" href="demo/manager-sourcing.html"
+         onclick="track('preview_open_click',{from:'section',screen:'manager-sourcing.html'})">
+        <span class="step">Step 1</span>
+        <h3>도매 모니터링 · 보관함</h3>
+        <p>도매밴드 신규 글을 감지해 원하는 상품만 담습니다.</p>
+        <span class="go">화면 열기 →</span>
+      </a>
+
+      <a class="preview-card" href="demo/manager-ai.html"
+         onclick="track('preview_open_click',{from:'section',screen:'manager-ai.html'})">
+        <span class="step">Step 2</span>
+        <h3>AI 상세페이지 · 가격</h3>
+        <p>도매가를 분석해 소매가를 제안하고 상세페이지 초안을 만듭니다.</p>
+        <span class="go">화면 열기 →</span>
+      </a>
+
+      <!-- 04 발행 승인함이 핵심. 밴드 판매자가 가장 무서워하는 건 계정 정지다.
+           "자동으로 나갑니다"가 아니라 "나가기 전에 사장님이 누르십니다"를 화면으로 보여준다. -->
+      <a class="preview-card key" href="demo/manager-approve.html"
+         onclick="track('preview_open_click',{from:'section',screen:'manager-approve.html'})">
+        <span class="step">Step 3 · 가장 많이 보십니다</span>
+        <h3>발행 승인함</h3>
+        <p>쇼핑몰과 밴드에 나가기 전, 사장님이 확인하고 누릅니다.</p>
+        <span class="go">화면 열기 →</span>
+      </a>
+
+      <a class="preview-card" href="demo/manager-orders.html"
+         onclick="track('preview_open_click',{from:'section',screen:'manager-orders.html'})">
+        <span class="step">Step 4</span>
+        <h3>통합 주문</h3>
+        <p>카드결제와 무통장입금 주문이 같은 화면에 모입니다.</p>
+        <span class="go">화면 열기 →</span>
+      </a>
+
+      <a class="preview-card" href="demo/manager-purchase.html"
+         onclick="track('preview_open_click',{from:'section',screen:'manager-purchase.html'})">
+        <span class="step">Step 5</span>
+        <h3>원클릭 발주서</h3>
+        <p>하루치 주문을 도매처별 양식으로 한 번에 뽑습니다.</p>
+        <span class="go">화면 열기 →</span>
+      </a>
+    </div>
+
+    <div class="preview-foot">
+      <p class="disc">
+        화면에 보이는 매출·주문·재고 숫자와 상품 정보는 설명을 위해 만든 샘플입니다.
+        <strong>실제 고객 데이터가 아닙니다.</strong>
+      </p>
+      <div class="btns">
+        <a href="demo/manager.html" class="btn btn-outline btn-lg"
+           onclick="track('preview_open_click',{from:'section_foot',screen:'manager.html'})">전체 화면 둘러보기</a>
+        <button class="btn btn-accent btn-lg" onclick="openTrialPopup('preview')">무료체험 신청서 제출 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CTA (통합) ═══ -->
-<section class="form-section" id="form">
+<section class="form-section" id="form"><span id="apply" aria-hidden="true"></span>
   <div class="container">
     <div style="text-align:center;">
       <span class="section-label">무료체험판 사용해보기</span>
       <h2>지금 시작하면, 내일부터 달라집니다</h2>
       <p style="color:var(--text-secondary); margin-top:12px; font-size:16px; max-width:500px; margin-left:auto; margin-right:auto;">신용카드 등록 없이 7일간 무료로 사용해 보실 수 있습니다.<br>신청서를 작성하시면 로그인 아이디와 패스워드를 발행해 드립니다.</p>
       <div style="margin-top:32px;">
-        <button class="btn btn-accent btn-lg" onclick="openTrialPopup()" style="font-size:18px; padding:20px 48px;">🚀 무료체험신청서제출 →</button>
+        <button class="btn btn-accent btn-lg" onclick="openTrialPopup('cta_section')" style="font-size:18px; padding:20px 48px;">🚀 무료체험신청서제출 →</button>
       </div>
       <p class="form-note" style="margin-top:16px;">✓ 카드 등록 없음 · ✓ 7일 무료 · ✓ <strong style="color:var(--primary);">설치는 담당자가 직접 도와드립니다</strong></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 자주 묻는 질문 (2026-08-25 신설) ═══
+     미리보기를 본 뒤 남는 질문 5개. 특히 계정 정지 우려에 답한다. -->
+<section id="faq">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-label">자주 묻는 질문</span>
+      <h2>미리보기를 보시고<br>남는 질문들</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>미리보기 화면의 숫자는 실제 매출인가요?</summary>
+        <p class="a">아닙니다. 설명을 위해 만든 샘플입니다. 실제 고객의 매출이나 주문 정보는 미리보기에 넣지 않습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>회원가입을 해야 볼 수 있나요?</summary>
+        <p class="a">아닙니다. 링크만 누르시면 바로 열립니다. 연락처를 남기지 않으셔도 됩니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>제가 쓰게 될 화면도 이것과 같은가요?</summary>
+        <p class="a">같은 화면입니다. 데이터만 사장님 밴드와 상품으로 바뀝니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>자동으로 글이 올라가면 밴드 계정이 정지되지 않나요?</summary>
+        <p class="a">
+          기본은 승인 모드입니다. 발행 전에 승인함에 모아 두고, 사장님이 확인하고 누르셔야 나갑니다.
+          시간대와 하루 건수 한도도 사장님이 정하십니다.
+          <a href="demo/manager-approve.html" style="color:var(--primary); font-weight:600;"
+             onclick="track('preview_open_click',{from:'faq',screen:'manager-approve.html'})">발행 승인함 화면에서 직접 확인해 보세요 →</a>
+        </p>
+      </details>
+      <details class="faq-item">
+        <summary>우리 업종에도 맞을까요?</summary>
+        <p class="a">
+          수산·농산·축산·밀키트 밴드에서 쓰고 계십니다. 취급 품목에 따라 발주서 양식과 옵션 항목이 달라지는데,
+          그 부분은 상담 때 사장님 상품으로 직접 맞춰 보여드립니다.
+        </p>
+      </details>
     </div>
   </div>
 </section>
@@ -822,6 +1052,17 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
     <div class="footer-logo">밴드오토</div>
     <p>밴드 판매 자동화 플랫폼 · <a href="https://hublink.im">HUB LINK</a> 제공</p>
     <p style="margin-top:8px;">문의: <a href="mailto:skkim3925@gmail.com">skkim3925@gmail.com</a></p>
+    <div class="footer-demos">
+      <div class="t">관리자 화면 미리보기 · 가입 없이 열립니다</div>
+      <ul>
+        <li><a href="demo/manager.html">오늘 대시보드</a></li>
+        <li><a href="demo/manager-sourcing.html">도매 모니터링·보관함</a></li>
+        <li><a href="demo/manager-ai.html">AI 상세페이지·가격</a></li>
+        <li><a href="demo/manager-approve.html">발행 승인함</a></li>
+        <li><a href="demo/manager-orders.html">통합 주문</a></li>
+        <li><a href="demo/manager-purchase.html">원클릭 발주서</a></li>
+      </ul>
+    </div>
     <p style="margin-top:16px; font-size:13px;">© 2026 BandAuto. All rights reserved.</p>
   </div>
 </footer>
@@ -896,6 +1137,11 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
       <!-- 신청양식 구분선 -->
       <div class="trial-form-divider"></div>
       <div class="trial-form-title">무료체험 신청양식</div>
+      <p style="text-align:center; font-size:13.5px; color:var(--text-secondary); margin:-6px 0 16px;">
+        아직 화면을 못 보셨다면,
+        <a href="demo/manager.html" style="color:var(--primary); font-weight:700;"
+           onclick="track('preview_open_click',{from:'form'})">관리자 화면 미리보기</a>를 먼저 열어보셔도 됩니다.
+      </p>
 
       <!-- 신청 폼 -->
       <form id="trialForm" onsubmit="return handleSubmit(event)">
@@ -946,8 +1192,32 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
 <div class="toast" id="toast">✅ 신청이 완료되었습니다! 곧 연락드리겠습니다.</div>
 
 <script>
+/* ══════════════════════════════════════════════════════
+   계측 (2026-08-25)
+   미리보기는 "좋아 보이는데 효과를 모르겠다"로 끝나기 쉽다. 배포와 동시에 심는다.
+
+     preview_open_click — 어느 자리에서 어느 화면을 열었는지
+     preview_depth      — 한 방문에서 화면 몇 장을 봤는지 (데모 쪽 demo-nav.js 가 기록)
+     apply_submit       — 신청 완료. 미리보기를 본 방문자와 안 본 방문자로 나눠 본다.
+
+   GA4 태그가 붙기 전에도 dataLayer 에 쌓아 둔다 — 나중에 태그만 붙이면
+   지금 정의한 이름 그대로 잡힌다.
+   ══════════════════════════════════════════════════════ */
+window.dataLayer = window.dataLayer || [];
+function track(name, params) {
+  var payload = Object.assign({ event: name }, params || {});
+  window.dataLayer.push(payload);
+  if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+}
+/* 이 방문자가 미리보기를 본 적 있는지 — 신청 전환율을 두 무리로 갈라 보기 위한 표식 */
+function hasSeenPreview() {
+  try { return localStorage.getItem('bandauto_preview_seen_any') === '1'; }
+  catch (e) { return false; }
+}
+
 /* ── Trial Popup ── */
-function openTrialPopup() {
+function openTrialPopup(source) {
+  track('apply_open', { source: source || 'unknown', seen_preview: hasSeenPreview() });
   document.getElementById('trialOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -958,6 +1228,12 @@ function closeTrialPopup() {
 document.getElementById('trialOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeTrialPopup();
 });
+
+/* 미리보기 화면의 "무료체험 신청" 버튼은 ../index.html#apply 로 돌아온다.
+   여기까지 온 분은 이미 신청할 마음이 있으므로 폼을 바로 띄운다. */
+if (location.hash === '#apply') {
+  setTimeout(function () { openTrialPopup('preview_return'); }, 260);
+}
 
 /* close on ESC (trial popup) */
 document.addEventListener('keydown', e => {
@@ -998,6 +1274,13 @@ function handleSubmit(e) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   }).then(() => {
+    /* 미리보기를 본 방문자와 안 본 방문자로 나눠 전환율을 비교한다.
+       판단 기준: 본 사람의 신청 전환율이 안 본 사람의 2배 이상이면 미리보기가 제 일을 한 것. */
+    let depth = 0;
+    try { depth = JSON.parse(sessionStorage.getItem('bandauto_preview_seen') || '[]').length; }
+    catch (err) { depth = 0; }
+    track('apply_submit', { seen_preview: hasSeenPreview(), preview_depth: depth });
+
     closeTrialPopup();
     const toast = document.getElementById('toast');
     toast.classList.add('show');

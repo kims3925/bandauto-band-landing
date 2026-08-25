@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 상세페이지 · 가격 제안 — 밴드오토 관리자 화면 미리보기</title>
+<meta name="description" content="도매가를 분석해 소매가를 제안하고 근거를 함께 보여줍니다. 상세페이지 초안도 자동 생성되며 사장님이 바로 고치실 수 있습니다. 가입 없이 열리는 미리보기입니다.">
+<link rel="canonical" href="https://band.hublink.im/demo/manager-ai.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AI 상세페이지 · 가격 제안 — 밴드오토 관리자 화면 미리보기">
+<meta property="og:description" content="도매가 → 제안 소매가와 그 근거. 샘플 데이터로 채운 실제 화면입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body data-screen="manager-ai.html">
+
+<div class="demobar">
+  <span class="msg">미리보기 화면입니다. 숫자와 상품 정보는 <b>샘플</b>이며, 일부 버튼은 동작하지 않습니다.</span>
+  <a href="../index.html">← 랜딩으로</a>
+  <a href="../index.html#apply" class="cta">무료체험 신청</a>
+</div>
+
+<div class="shell">
+  <aside class="side"></aside>
+  <div class="main">
+    <header class="topbar">
+      <span class="date">8월 21일 (금) · 오후 3시 마감</span>
+      <div class="right">
+        <span class="chip">🤖 AI 가공 완료 5건</span>
+        <span class="chip mode">마진 정책 적용됨</span>
+      </div>
+    </header>
+
+    <div class="page">
+      <div class="page-head">
+        <h1>AI 상세페이지 · 가격 <span class="tag wait" style="vertical-align:middle">Step 2</span></h1>
+        <p class="does">이 화면에서 하는 일: 도매가에 맞는 소매가를 제안받고, 상세페이지 초안을 확인·수정합니다.</p>
+        <span class="scope">바다애수산 · 미리보기</span>
+      </div>
+
+      <section class="blk">
+        <div class="sec-head"><h2>가공된 상품 5건</h2><span>보관함에서 담은 상품이 여기로 넘어옵니다</span></div>
+        <div class="scroller">
+          <table>
+            <thead>
+              <tr><th>상품</th><th class="n">도매가</th><th class="n">제안 소매가</th><th class="n">마진</th><th>상세페이지</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="name">🦪 통영 생굴 1kg</td><td class="n">12,000</td><td class="n"><strong>18,900</strong></td><td class="n">36.5%</td><td><span class="tag on">생성 완료</span></td><td><span class="btn pri">보기</span></td></tr>
+              <tr><td class="name">🐟 손질 갈치 (대) 2미</td><td class="n">15,500</td><td class="n"><strong>23,900</strong></td><td class="n">35.1%</td><td><span class="tag on">생성 완료</span></td><td><span class="btn">보기</span></td></tr>
+              <tr><td class="name">🐠 반건조 가자미 5미</td><td class="n">11,000</td><td class="n"><strong>17,900</strong></td><td class="n">38.5%</td><td><span class="tag on">생성 완료</span></td><td><span class="btn">보기</span></td></tr>
+              <tr><td class="name">🐚 완도 활전복 10미</td><td class="n">28,000</td><td class="n"><strong>42,900</strong></td><td class="n">34.7%</td><td><span class="tag on">생성 완료</span></td><td><span class="btn">보기</span></td></tr>
+              <tr><td class="name">🐡 제주 옥돔 3미</td><td class="n">22,000</td><td class="n"><strong>33,900</strong></td><td class="n">35.1%</td><td><span class="tag on">생성 완료</span></td><td><span class="btn">보기</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="sec-head"><h2>가격 제안 근거</h2><span>통영 생굴 1kg 예시</span></div>
+        <div class="card">
+          <div class="stats" style="margin-bottom:14px">
+            <div class="stat"><div class="lbl">도매가</div><div class="row"><span class="v">12,000</span><span class="u">원</span></div><div class="note">도매처 A · 8월 21일</div></div>
+            <div class="stat"><div class="lbl">+ 마진</div><div class="row"><span class="v">+5,000</span><span class="u">원</span></div><div class="note">1~19,900원 구간 정책</div></div>
+            <div class="stat"><div class="lbl">+ 배송비</div><div class="row"><span class="v">+1,900</span><span class="u">원</span></div><div class="note">본문에 "배송비 별도" 명시</div></div>
+            <div class="stat"><div class="lbl">제안 소매가</div><div class="row"><span class="v accent">18,900</span><span class="u">원</span></div><div class="note">마진율 36.5%</div></div>
+          </div>
+          <p style="font-size:13.5px; color:var(--text-secondary); margin:0; padding-top:12px; border-top:1px dashed var(--border)">
+            <strong style="color:var(--text)">왜 18,900원인가</strong> — 사장님이 정하신 도매방별 마진 정책에서
+            도매가 12,000원은 <strong>1~19,900원 구간(+5,000원)</strong>에 해당합니다. 도매 원본 글에 "배송비 별도"가
+            적혀 있어 배송비 1,900원을 더했고, 끝자리를 900원으로 맞춰 18,900원이 됐습니다.
+            <strong>제안일 뿐이라 사장님이 그 자리에서 고치실 수 있습니다.</strong>
+          </p>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="sec-head"><h2>상세페이지 초안</h2><span>자동 생성 · 그대로 수정 가능</span></div>
+        <div class="card">
+          <div style="border:1px solid var(--border); border-radius:10px; padding:16px 18px; background:var(--bg-alt)">
+            <p style="margin:0 0 10px; font-weight:700; font-size:16px">🦪 통영 생굴 1kg — 오늘 아침 통영에서 올라왔습니다</p>
+            <p style="margin:0 0 8px; font-size:14px; color:var(--text-secondary)">
+              찬바람 불기 시작하면 굴이 제철입니다. 오늘 들어온 생굴은 알이 굵고 물빠짐이 적어
+              굴국·굴전 어디에 쓰셔도 좋습니다.
+            </p>
+            <p style="margin:0 0 8px; font-size:14px; color:var(--text-secondary)">
+              • 중량 1kg (세척 후 기준)<br>
+              • 보관 냉장 0~5℃ · 받으신 날 포함 2일 이내 드시는 것을 권합니다<br>
+              • 아이스박스 + 아이스팩 포장
+            </p>
+            <p style="margin:0; font-size:14px; color:var(--text-secondary)">
+              📝 <strong>비고</strong> — 굴은 신선도가 생명이라 당일 발송분만 받습니다. 오후 3시 마감입니다.
+            </p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:13px">
+            <span class="btn pri">이대로 사용</span>
+            <span class="btn">문구 수정</span>
+            <span class="btn">다시 생성</span>
+            <span class="btn gho">사진 3장 · 가격 이미지 1장 자동 제외됨</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="card" style="background:#EFF6FF; border-color:#BFDBFE">
+          <p style="margin:0; font-size:13.5px; color:var(--primary-dark)">
+            <strong>AI가 정하는 게 아니라 제안합니다.</strong> 가격·문구 모두 사장님이 확인하고 고치신 뒤
+            <a href="manager-approve.html" style="color:var(--primary-dark); text-decoration:underline">발행 승인함</a>으로 넘어갑니다.
+            승인 전에는 밴드에도 쇼핑몰에도 아무것도 올라가지 않습니다.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="foot">
+      이 화면은 <b>밴드오토 관리자 패널</b>의 미리보기입니다. 도매가·소매가·마진율은 설명을 위해 만든 샘플이며,
+      실제 거래 단가나 마진이 아닙니다.<br>
+      다음 단계는 <a href="manager-approve.html">발행 승인함</a>입니다.
+    </div>
+  </div>
+</div>
+
+<script src="demo-data.js"></script>
+<script src="demo-nav.js"></script>
+</body>
+</html>
