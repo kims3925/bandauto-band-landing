@@ -52,6 +52,10 @@
   }
 }
 </script>
+<!-- 파비콘 — 운영 관리자 패널과 동일한 아이콘 (2026-08-26) -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -648,6 +652,17 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
 }
 .faq-item[open] summary { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 14px; }
 
+/* ── 히어로 CTA 3버튼 배치 ──
+   PC 는 한 줄에 나란히, 모바일(≤768px)은 세로로 쌓는다.
+   기존 .hero-cta 가 flex 라 버튼 하나를 더해도 레이아웃이 깨지지 않는다. */
+.hero-cta { flex-wrap: wrap; }
+.btn-shop { border-color: var(--success); color: var(--success); }
+.btn-shop:hover { background: var(--success); color: #fff; }
+@media (max-width: 768px) {
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+}
+
 /* ── 히어로 CTA 보조 문구 ── */
 .hero-cta-note { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
 .hero-cta-note strong { color: var(--primary); }
@@ -719,10 +734,14 @@ h3 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; line-height: 1.4; }
     <div class="hero-cta">
       <a href="demo/manager.html" class="btn btn-primary btn-lg"
          onclick="track('preview_open_click',{from:'hero'})">🖥️ 관리자 화면 미리보기</a>
+      <a href="https://bshop.hublink.im/family/main" target="_blank" rel="noopener"
+         class="btn btn-outline btn-lg btn-shop"
+         onclick="track('shop_view_click',{from:'hero'})">🛒 쇼핑몰 보기</a>
       <button class="btn btn-accent btn-lg" onclick="openTrialPopup('hero')">🚀 무료체험신청서제출 →</button>
     </div>
     <p class="hero-cta-note">
-      <strong>가입 없이 바로 열립니다.</strong> 실제 관리자 화면을 샘플 데이터로 채워 뒀습니다.
+      <strong>둘 다 가입 없이 바로 열립니다.</strong>
+      관리자 화면은 샘플 데이터로 채운 실제 화면이고, 쇼핑몰은 밴드오토로 운영 중인 실제 쇼핑몰입니다.
     </p>
   </div>
 </section>
