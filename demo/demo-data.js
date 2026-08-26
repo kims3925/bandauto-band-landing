@@ -24,9 +24,9 @@ const DEMO = {
   // 실존 업체와 겹치면 그쪽에서 항의가 들어온다. "예시" 를 붙여 검색해도 걸리지 않는
   // 가공 상호만 쓴다. 실제 고객 밴드명(가족함께수산 등)은 절대 넣지 않는다.
   shop: {
-    name: '예시수산',
-    bandName: '예시수산 소매밴드',
-    mallName: '예시수산 쇼핑몰',
+    name: '예시상회',
+    bandName: '예시상회 소매밴드',
+    mallName: '예시상회 쇼핑몰',
   },
   // 가장 최근 금요일(오늘이 금요일이면 오늘). 화면마다 "오늘"이 어긋나지 않도록
   // 이 한 곳에서만 계산하고, 모든 화면이 여기서 값을 읽는다.
@@ -57,15 +57,17 @@ const DEMO = {
         공개적으로 알리는 셈이 되므로 비율 표기는 쓰지 않는다.
         배송비는 4,000원 기준. */
   // 품절 1종과 매진임박 2종을 일부러 섞었다. 전부 판매중이면 재고 기능이 화면에 안 드러난다.
+  // 업종도 섞는다(수산 5 · 농산 1 · 축산 1 · 밀키트 1) — 랜딩 신청 폼이 받는 업종을
+  // 화면이 보여줘야 농산·축산 사장님이 "우리 업종은 아닌가" 하고 닫지 않는다.
   products: [
     { id: 1, name: '통영 생굴 1kg',      emoji: '🦪', cost: 12000, price: 18900, stock: 20, left: 3,  vendor: 'A', state: 'soon' },
     { id: 2, name: '손질 갈치 (대) 2미',  emoji: '🐟', cost: 15500, price: 23900, stock: 30, left: 12, vendor: 'A', state: 'on'   },
-    { id: 3, name: '반건조 가자미 5미',   emoji: '🐠', cost: 11000, price: 17900, stock: 25, left: 18, vendor: 'A', state: 'on'   },
+    { id: 3, name: '햇 사과 5kg',         emoji: '🍎', cost: 18000, price: 27900, stock: 25, left: 18, vendor: 'A', state: 'on'   },
     { id: 4, name: '완도 활전복 10미',    emoji: '🐚', cost: 28000, price: 42900, stock: 12, left: 4,  vendor: 'B', state: 'soon' },
     { id: 5, name: '제주 옥돔 3미',       emoji: '🐡', cost: 22000, price: 33900, stock: 15, left: 9,  vendor: 'B', state: 'on'   },
-    { id: 6, name: '법성포 굴비 10미',    emoji: '🍢', cost: 32000, price: 48900, stock: 10, left: 6,  vendor: 'B', state: 'on'   },
+    { id: 6, name: '한우 국거리 500g',    emoji: '🥩', cost: 21000, price: 31900, stock: 10, left: 6,  vendor: 'B', state: 'on'   },
     { id: 7, name: '국산 새우살 500g',    emoji: '🦐', cost: 9800,  price: 15900, stock: 25, left: 0,  vendor: 'C', state: 'out'  },
-    { id: 8, name: '손질 오징어 1kg',     emoji: '🦑', cost: 8500,  price: 13900, stock: 40, left: 22, vendor: 'C', state: 'on'   },
+    { id: 8, name: '소고기 미역국 밀키트', emoji: '🍲', cost: 7500,  price: 12900, stock: 40, left: 22, vendor: 'C', state: 'on'   },
   ],
 
   /* ── 오늘 지표 — 대시보드 카드에 그대로 ───────────────── */

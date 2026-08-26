@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url'
 const DIR = path.dirname(fileURLToPath(import.meta.url))
 const DEMO = (await import('./demo-data.js')).default
 
+const SEC_PURCHASE = '\n ⑤-b 발주서 합계가 수량 × 도매가와 맞는가'
 let fail = 0
 let pass = 0
 const ok = (m) => { pass++; console.log(`  ✓ ${m}`) }
@@ -114,6 +115,37 @@ for (const p of DEMO.products.filter((x) => x.state !== 'out')) {
   if (!purchase.includes(p.name)) continue
   if (purchase.includes(won(p.cost))) ok(`발주서 ${p.name} 도매가 ${won(p.cost)} 일치`)
   else bad(`발주서 ${p.name} 도매가가 데이터(${won(p.cost)})와 다름`)
+}
+
+/* ── 3-b. 발주서 합계가 수량 × 도매가와 맞는가 ─────────
+   품목을 바꿀 때 단가만 고치고 합계를 안 고치면 사장님이 곱해 보고 바로 안다. */
+console.log(SEC_PURCHASE)
+{
+  const rowRe = /<td class="name">([^<]+)<\/td><td class="n">(\d+)<\/td><td class="n">([\d,]+)<\/td><td class="n">([\d,]+)<\/td>/g
+  const num = (t) => Number(t.replace(/,/g, ''))
+  let m, n = 0
+  while ((m = rowRe.exec(purchase)) !== null) {
+    const [, name, qty, unit, total] = m
+    n++
+    if (Number(qty) * num(unit) === num(total)) ok(`${name}: ${qty} × ${unit} = ${total}`)
+    else bad(`${name}: ${qty} × ${unit} = ${(Number(qty) * num(unit)).toLocaleString('en-US')} 인데 ${total} 로 적힘`)
+  }
+  if (n === 0) bad('발주서에서 합계를 검사할 행을 찾지 못함 (표 구조가 바뀌었나)')
+  else ok(`발주서 ${n}개 행의 합계 검증 완료`)
+
+  // 발주서 단가는 데이터 세트의 도매가와 같아야 한다 (정규식 대신 위에서 파싱한 행을 재사용)
+  const purchaseRows = []
+  rowRe.lastIndex = 0
+  let r
+  while ((r = rowRe.exec(purchase)) !== null) {
+    purchaseRows.push({ name: r[1], qty: Number(r[2]), unit: num(r[3]) })
+  }
+  for (const pr of DEMO.products.filter((x) => x.state !== 'out')) {
+    const row = purchaseRows.find((x) => x.name === pr.name)
+    if (!row) continue
+    if (row.unit === pr.cost) ok(`발주서 ${pr.name} 단가 ${pr.cost.toLocaleString('en-US')} = 데이터 세트`)
+    else bad(`발주서 ${pr.name} 단가 ${row.unit.toLocaleString('en-US')} ≠ 데이터 세트 ${pr.cost.toLocaleString('en-US')}`)
+  }
 }
 
 /* ── 4. 마스킹 ──────────────────────────────────────── */
