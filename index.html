@@ -99,8 +99,15 @@ h3{font-size:22px}
 .step h3{font-size:17px;margin:14px 0 10px}
 .step p,.feature p{font-size:13px}
 .step a{display:inline-block;font-size:12px;color:#255cd6;font-weight:700;margin-top:18px}
-.service-links{display:flex;gap:24px;flex-wrap:wrap;margin-top:26px;font-size:13px;font-weight:600;color:#405e53}
-.service-links a{text-decoration:underline;text-underline-offset:5px}
+.service-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px}
+.service-links a{display:flex;align-items:center;justify-content:center;min-height:58px;padding:13px 18px;border:1px solid #b9c9e8;border-radius:12px;background:#fff;color:#2554af;font-size:14px;font-weight:700;text-align:center;word-break:keep-all;transition:background .2s,transform .2s,box-shadow .2s}
+.service-links a:hover{background:#edf3ff;transform:translateY(-2px);box-shadow:0 6px 16px #1b3c7814}
+.service-links a:first-child{background:#255cd6;border-color:#255cd6;color:#fff}
+.service-links a:first-child:hover{background:#1948b5}
+.service-links.banchan-links a{border-color:#bdd4c1;color:#216947}
+.service-links.banchan-links a:hover{background:#e9f3e9}
+.service-links.banchan-links a:first-child{background:#16724e;border-color:#16724e;color:#fff}
+.service-links.banchan-links a:first-child:hover{background:#105b3d}
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
 .feature b{font-size:12px;color:#4f7848}
 .feature h3{font-size:18px;margin:12px 0}
@@ -127,7 +134,7 @@ footer a{text-decoration:underline}
 .skip{position:fixed;top:-60px;left:20px;z-index:100;background:white;padding:10px}
 .skip:focus{top:10px}
 
-@media(max-width:900px){.hero-top{grid-template-columns:1fr;gap:24px}
+@media(max-width:900px){.service-links{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-top{grid-template-columns:1fr;gap:24px}
 .steps{grid-template-columns:repeat(2,1fr)}
 .detail-top{display:block}
 .features{grid-template-columns:repeat(2,1fr)}
@@ -137,6 +144,7 @@ footer a{text-decoration:underline}
 }
 
 @media(max-width:600px){.wrap{width:calc(100% - 36px)}
+.service-links{grid-template-columns:1fr;gap:10px}
 .nav .wrap{min-height:68px;gap:10px;flex-wrap:wrap;padding:12px 0}
 .brand{font-size:22px}
 .nav-links{font-size:11px;gap:12px}
@@ -514,7 +522,7 @@ footer p{margin-top:12px}
 </article>
 </div>
 <div class="flow">촬영·메뉴 선택 → 반찬몰 등록 → 밴드 발행 → 주문·결제 → 배달·픽업 → 단골관리</div>
-<div class="service-links">
+<div class="service-links banchan-links">
 <a href="https://lc.hublink.im/banchan">상세 소개 · 체험 및 도입 안내 ↗</a>
 <a href="https://lc.hublink.im/demo/manager.html">반찬가게 관리자 미리보기 ↗</a>
 <a href="https://lc.hublink.im/gfshop">반찬몰 보기 ↗</a>
