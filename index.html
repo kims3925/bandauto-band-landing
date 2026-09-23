@@ -128,9 +128,14 @@ td strong{display:block;color:#21382c}
 .start p{color:#c7dace;margin-top:15px}
 .start .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px}
 .start h2{font-size:32px}
-footer{padding:36px 0;font-size:12px;color:#6a7a70}
-footer .wrap{display:flex;justify-content:space-between;gap:25px}
-footer a{text-decoration:underline}
+footer{padding:48px 0;background:#f4f7f2;border-top:1px solid #dfe8dd;font-size:13px;color:#52635a}
+footer .wrap{display:block}
+footer .footer-brand{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:800;color:#16724e;letter-spacing:-.04em}
+footer .footer-brand img{width:48px;height:48px;object-fit:contain}
+footer .footer-provider{margin-top:8px;font-weight:700;color:#263c2e}
+footer .footer-details{display:flex;flex-wrap:wrap;column-gap:20px;row-gap:7px;margin:20px 0 0;padding:0;list-style:none}
+footer .footer-address,footer .footer-scope,footer .footer-contact{margin-top:10px}
+footer a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .skip{position:fixed;top:-60px;left:20px;z-index:100;background:white;padding:10px}
 .skip:focus{top:10px}
 
@@ -165,8 +170,8 @@ footer a{text-decoration:underline}
 th,td{padding:17px}
 .start{padding:44px 0}
 .start h2{font-size:27px}
-footer .wrap{display:block}
-footer p{margin-top:12px}
+footer .footer-details{display:block}
+footer .footer-details li+li{margin-top:7px}
 .actions .btn{font-size:13px;padding:12px 17px}
 .trial-form-grid{grid-template-columns:1fr}
 .trial-popup{max-height:90dvh}
@@ -628,17 +633,17 @@ footer p{margin-top:12px}
 </main>
 <footer>
 <div class="wrap">
-<div>
-<a class="brand" href="/">밴드<span>오토.</span>
-</a>
-<p>밴드 판매 자동화 플랫폼 · 밴드 반찬가게 운영 솔루션</p>
-</div>
-<div>
-<p>
-<a href="https://hublink.im">HUB LINK</a> · 문의 <a href="mailto:skkim3925@gmail.com">skkim3925@gmail.com</a>
-</p>
-<p>© 2026 BandAuto. All rights reserved.</p>
-</div>
+<div class="footer-brand"><img src="images/goodsolution-logo.png" alt="굿솔루션 로고" width="48" height="48">굿솔루션</div>
+<p class="footer-provider">제공 굿프렌드솔루션 주식회사</p>
+<ul class="footer-details">
+<li>대표 김상국</li>
+<li>사업자등록번호 678-86-00559</li>
+<li>법인등록번호 110111-6235819</li>
+<li>개업 2016년 11월 18일</li>
+</ul>
+<p class="footer-address">서울특별시 서초구 서초대로 275, 202호 (서초동, 중앙빌딩)</p>
+<p class="footer-scope">업태·종목 서비스(소프트웨어 개발·공급 · IT시스템컨설팅) · 도소매 · 무역 · 전자상거래</p>
+<p class="footer-contact"><a href="tel:025713925">02-571-3925</a> · <a href="mailto:kims3925@naver.com">kims3925@naver.com</a></p>
 </div>
 </footer>
 <!-- ═══ Trial Popup ═══ -->
