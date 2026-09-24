@@ -153,7 +153,7 @@ const DEMO = {
   ],
 
   /* ── 랜딩 주소 (돌아가기·신청 버튼) ─────────────────── */
-  landing: { home: '../index.html', apply: '../index.html#apply' },
+  landing: { home: '../index.html', apply: '../sales.html#apply' },
 }
 
 if (typeof window !== 'undefined') window.DEMO = DEMO
